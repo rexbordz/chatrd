@@ -567,6 +567,10 @@ body {
     right: 20px;
 }
 
+#chat-input #chat-input-settings {
+    right: 50px;
+}
+
 #chat-input .settings {
     display: none;
     background: #0c0c0c;
@@ -575,7 +579,7 @@ body {
     
     position: absolute;
     top: -40px;
-    right: 0px;
+    right: 30px;
     z-index: 11;
 
     box-shadow: 0 0 10px rgba(255,255,255,0.05)
@@ -665,6 +669,16 @@ body {
 #chat-input .settings input[type=checkbox]:checked + .slider:before {
     transform: translateX(19px);
 }
+
+#chat-input #twitch,
+#chat-input #youtube,
+#chat-input #tiktok,
+#chat-input #kick {
+    display: inline-flex;
+    align-items: center;
+    padding: 5px;
+    gap: 5px;
+} 
 
 #chat-input #twitch input[type=checkbox]:checked + .slider {
     background-color: #a970ff;

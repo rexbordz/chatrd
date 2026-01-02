@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap">
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.1.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simple-notify@1.0.4/dist/simple-notify.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css">
 
@@ -32,6 +32,39 @@
                     <input id="chat-input-text-field" type="text">
                 </form>
 
+                <div id="chat-settings" class="settings">
+
+                    <div id="twitch">
+                        <img src="js/modules/twitch/images/logo-twitch.svg" alt="">
+                        <label class="switch">
+                            <input type="checkbox" name="sendTwitchMessages" checked><span class="slider"></span> 
+                        </label>
+                    </div>
+
+                    <div id="youtube">
+                        <img src="js/modules/youtube/images/logo-youtube.svg" alt="">
+                        <label class="switch">
+                            <input type="checkbox" name="sendYouTubeMessages" checked><span class="slider"></span> 
+                        </label>
+                    </div>
+
+                    <div id="tiktok">
+                        <img src="js/modules/tiktok/images/logo-tiktok.svg" alt="">
+                        <label class="switch">
+                            <input type="checkbox" name="sendTikTokMessages" checked><span class="slider"></span> 
+                        </label>
+                    </div>
+
+                    <div id="kick">
+                        <img src="js/modules/kick/images/logo-kick.svg" alt="">
+                        <label class="switch">
+                            <input type="checkbox" name="sendKickMessages" checked><span class="slider"></span> 
+                        </label>
+                    </div>
+
+                </div>
+                
+                <button id="chat-input-settings"><i class="fa-solid fa-list-check"></i></button>
                 <button id="chat-input-send"><i class="fa-solid fa-paper-plane"></i></button>
             </div>
         </div>

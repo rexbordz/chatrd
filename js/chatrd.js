@@ -380,11 +380,16 @@ function createRandomColor(platform, username) {
         return userColors.get(platform).get(username);
     }
     else {
-        const randomColor = "hsl(" + Math.random() * 360 + ", 100%, 75%)";
+        const hue = Math.random() * 360;
+        const saturation = 100;
+        const lightness = 50;
+
+        const randomColor = `hsl(${hue}, ${saturation}%, ${lightness}%)`;
         userColors.get(platform).set(username, randomColor);
         return randomColor;
     }
 }
+
 
 
 function hexToRGBA(hexadecimal,opacity) {
@@ -515,6 +520,7 @@ const chatcommandslist = document.getElementById('chat-autocomplete-list');
 let chatcurrentFocus = -1;
 
 const chatInputSend = document.getElementById("chat-input-send");
+const chatInputSettings = document.getElementById("chat-input-settings");
 const chatInputForm = document.querySelector("#chat-input form");
 const chatInput = chatInputForm.querySelector("input[type=text]")
 
@@ -635,15 +641,61 @@ chatInput.addEventListener('keydown', function (e) {
 
 
 
+async function saveChatInputSettingsToLocalStorage() {
+    const chatSettings = document.getElementById("chat-settings");
+    const checkboxes = chatSettings.querySelectorAll("input[type=checkbox]");
+    const settings = {};
+
+    checkboxes.forEach(cb => settings[cb.name] = cb.checked);
+
+    localStorage.setItem("chatrdChatInputSettings", JSON.stringify(settings));
+}
+
+async function loadChatInputSettingFromLocalStorage() {
+    const chatSettings = document.getElementById("chat-settings");
+    const saved = localStorage.getItem("chatrdChatInputSettings");
+
+    if (!saved) return;
+
+    const settings = JSON.parse(saved);
+
+    Object.keys(settings).forEach(key => {
+        const input = chatSettings.querySelector(`[name="${key}"]`);
+        if (input) {
+            if (input.type === "checkbox") {
+                input.checked = settings[key];
+            }
+        }
+    });
+}
+
+async function pushChatInputSettings() {
+    const chatSettings = document.getElementById("chat-settings");
+    const checkboxes = chatSettings.querySelectorAll("input[type=checkbox]");
+
+    checkboxes.forEach(cb => {
+        cb.addEventListener('change', saveChatInputSettingsToLocalStorage);
+    });
+}
+
+
+
 chatInputForm.addEventListener("submit", function(event) {
     event.preventDefault();
 
     var chatSendPlatforms = [];
 
-    if (showTwitch == true && showTwitchMessages == true) { chatSendPlatforms.push('twitch'); }
-    if (showYoutube == true && showYouTubeMessages == true) { chatSendPlatforms.push('youtube'); }
-    if (showTiktok == true && showTikTokMessages == true) { chatSendPlatforms.push('tiktok'); }
-    if (showKick == true && showKickMessages == true) { chatSendPlatforms.push('kick'); }
+    const chatSettings = document.getElementById("chat-settings");
+
+    const sendTwitchMessages = chatSettings.querySelector('input[type=checkbox][name="sendTwitchMessages"]').checked;
+    const sendYouTubeMessages = chatSettings.querySelector('input[type=checkbox][name="sendYouTubeMessages"]').checked;
+    const sendTikTokMessages = chatSettings.querySelector('input[type=checkbox][name="sendTikTokMessages"]').checked;
+    const sendKickMessages = chatSettings.querySelector('input[type=checkbox][name="sendKickMessages"]').checked;
+
+    if (showTwitch == true && showTwitchMessages == true && sendTwitchMessages == true) { chatSendPlatforms.push('twitch'); }
+    if (showYoutube == true && showYouTubeMessages == true && sendYouTubeMessages == true) { chatSendPlatforms.push('youtube'); }
+    if (showTiktok == true && showTikTokMessages == true && sendTikTokMessages == true) { chatSendPlatforms.push('tiktok'); }
+    if (showKick == true && showKickMessages == true && sendKickMessages == true) { chatSendPlatforms.push('kick'); }
 
     chatSendPlatforms = chatSendPlatforms.join(',')
 
@@ -681,6 +733,10 @@ chatInputForm.addEventListener("submit", function(event) {
 
 chatInputSend.addEventListener("click", function () {
     chatInputForm.requestSubmit();
+});
+
+chatInputSettings.addEventListener("click", function () {
+    document.querySelector("#chat-settings").classList.toggle("active");
 });
 
 document.addEventListener('click', function (e) {
@@ -846,6 +902,8 @@ async function getAndReplaceLinks(el) {
 
 
 document.addEventListener("DOMContentLoaded", function () {
+    pushChatInputSettings();
+    loadChatInputSettingFromLocalStorage();
 });
 
 
