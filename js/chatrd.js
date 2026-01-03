@@ -673,6 +673,16 @@ async function pushChatInputSettings() {
     const chatSettings = document.getElementById("chat-settings");
     const checkboxes = chatSettings.querySelectorAll("input[type=checkbox]");
 
+    const twitchSwitch = chatSettings.querySelector('#twitch');
+    const youtubeSwitch = chatSettings.querySelector('#youtube');
+    const tiktokSwitch = chatSettings.querySelector('#tiktok');
+    const kickSwitch = chatSettings.querySelector('#kick');
+
+    if (showTwitch == false) { twitchSwitch.style.display = 'none'; }
+    if (showYoutube == false) { youtubeSwitch.style.display = 'none'; }
+    if (showTiktok == false) { tiktokSwitch.style.display = 'none'; }
+    if (showKick == false) { kickSwitch.style.display = 'none'; }
+
     checkboxes.forEach(cb => {
         cb.addEventListener('change', saveChatInputSettingsToLocalStorage);
     });
@@ -737,6 +747,7 @@ chatInputSend.addEventListener("click", function () {
 
 chatInputSettings.addEventListener("click", function () {
     document.querySelector("#chat-settings").classList.toggle("active");
+    chatInputSettings.classList.toggle("active");
 });
 
 document.addEventListener('click', function (e) {

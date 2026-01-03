@@ -561,6 +561,7 @@ body {
 #chat-input button.active,
 #chat-input button:hover {
     color: #ffcc00;
+    transition: all ease-in-out 300ms;
 }
 
 #chat-input #chat-input-send {
@@ -587,6 +588,7 @@ body {
 
 #chat-input .settings.active {
     display: inline-block;
+    transition: all ease-in-out 300ms;
 }
 
 #chat-input .settings::after {
