@@ -22,6 +22,8 @@ const chatScrollBar                 = getURLParam("chatScrollBar", false);
 const chatField                     = getURLParam("chatField", false);
 const chatModeration                = getURLParam("chatModeration", false);
 
+const chatrdSkin                    = getURLParam("chatrdSkin", "default");
+
 const multiStreamerMode             = getURLParam("multiStreamerMode", false);
 
 const excludeCommands               = getURLParam("excludeCommands", true);
@@ -35,6 +37,18 @@ const chatTemplate                  = document.querySelector('#chat-message');
 const eventTemplate                 = document.querySelector('#event-message');
 
 const userColors = new Map();
+
+/* ✅ Explicit whitelist */
+const SKINS = {
+    default: "skin-default.css",
+    nutting: "skin-nutting.css",
+    kimballs: "skin-kimballs.css",
+    bubbles: "skin-bubbles.css"
+};
+
+const skinFile = SKINS[chatrdSkin] || SKINS.default;
+const skinLink = document.getElementById("chatrd-skins");
+skinLink.href = `css/${skinFile}`;
 
 const chatRDBody = document.body;
 chatRDBody.style.fontFamily = chatFontFamily;

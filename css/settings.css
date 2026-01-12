@@ -151,6 +151,29 @@ hr {
     outline: none;
 }
 
+#settings .config select {
+    min-width: 180px;
+    
+    font-family: "DM Sans", sans-serif;
+    border: none;
+    background-color: #222;
+    color: #fff;
+
+    padding: 10px 44px 10px 15px; /* ← more space on the right */
+    border-radius: 10px;
+    outline: none;
+
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+
+    background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='white' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L6 6L11 1' stroke='white' stroke-width='2' fill='none'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    background-size: 12px;
+}
+
+
 #settings .switch .slider {
     position: absolute;
     cursor: pointer;

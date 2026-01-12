@@ -1,0 +1,40 @@
+
+#chat .item .message { border: 2px solid #fff; border-radius: 10px; padding-left: 65px; }
+#chat .item .info .avatar { border: 2px solid #fff; }
+
+/* Two-lined Vertical Chat */
+#chat:not(.horizontal):not(.oneline) .item { margin-bottom: 10px !important; }
+#chat:not(.horizontal):not(.oneline) .item .actual-message { margin-top: 0 !important; }
+
+#chat:not(.horizontal):not(.oneline) .item .info .avatar { position: absolute !important; top: 10px; left: 10px; width: 50px; height: 50px; }
+#chat:not(.horizontal):not(.oneline) .item .info .avatar img { height: 50px; }
+#chat:not(.horizontal):not(.oneline) .item.chat.grouped .message { padding: 5px 10px; }
+
+/* One-lined Vertical Chat */
+#chat.oneline .item .info .avatar { position: absolute !important; top: 2px; left: 10px; }
+#chat.oneline .item:not(.grouped) .message { padding: 10px 10px 10px 48px; }
+#chat.oneline .item.grouped .message { padding: 10px; }
+#chat.oneline .item { margin-bottom: 8px !important; }
+
+/* One-lined Horizontal Chat */
+#chat.horizontal .item .info .avatar { position: absolute !important; top: -10px; left: -38px; }
+#chat.horizontal .item:not(.grouped) .message { padding: 10px 10px 10px 48px !important; }
+#chat.horizontal .item.grouped .message { padding: 11px !important; }
+
+#chat.horizontal .item:not(.grouped) .first-message,
+#chat.horizontal .item:not(.grouped) .shared-chat,
+#chat.horizontal .item:not(.grouped) .header,
+#chat.horizontal .item:not(.grouped) .info,
+#chat.horizontal .item:not(.grouped) .actual-message { transform: translateY(0px) !important; }
+
+#chat.horizontal .item.grouped .actual-message { transform: translateY(-1px) !important; }
+#chat.horizontal .item.grouped .message .actual-message:has(.emote) { transform: translateY(-1px) !important; }
+ 
+#chat .item.twitch .info .avatar,
+#chat .item.twitch .message { border-color: rgba(145,70,255,1); }
+#chat .item.youtube.info .avatar,
+#chat .item.youtube .message { border-color: rgba(255,0,0,1); }
+#chat .item.tiktok .info .avatar,
+#chat .item.tiktok .message { border-color: rgba(241,32,74,1); }
+#chat .item.kick .info .avatar,
+#chat .item.kick .message { border-color: rgba(72,212,21,1); }
