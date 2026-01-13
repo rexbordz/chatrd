@@ -203,7 +203,7 @@ body {
 }
 
 #chat .item .actual-message {
-    margin-top: 3px;
+    /*margin-top: 3px;*/
     font-weight: 300;
 }
 #chat .item .actual-message img {
